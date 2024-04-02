@@ -5,7 +5,7 @@ public class MathClass {
     // we are going to use mod and divide here
     //mod gave last digit always, while divide gave remaining ex, for 123 % 10 = 3, / = 12(as digit after dot(12.3) not considered in int variable)
     public static void main(String[] args) {
-
+        isPalindrome(121);
 
     }
 
@@ -14,7 +14,7 @@ public class MathClass {
 //        countNumberOfDigits(123);
         int count = 0;
         while (num > 0) {
-            num /= 10;
+            num /= 10; //time complexity Olog(n) as we are dividing here, specifically Olog10(N)
             count += 1;
         }
         System.out.println(count);
@@ -36,5 +36,20 @@ public class MathClass {
             revNumber = revNumber * 10 + mod;
         }
         System.out.println(revNumber);
+    }
+
+    // number which looks same from both sides, ex 1221, 131,
+    private static void isPalindrome(int num) {
+//        isPalindrome(121);
+        int revNumber = 0;
+        int originalNum = num;
+
+        while (num > 0) {
+            int mod = num % 10;
+            num /= 10;
+
+            revNumber = revNumber * 10 + mod;
+        }
+        System.out.println(revNumber == originalNum);
     }
 }
