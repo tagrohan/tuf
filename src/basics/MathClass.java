@@ -5,7 +5,7 @@ public class MathClass {
     // we are going to use mod and divide here
     //mod gave last digit always, while divide gave remaining ex, for 123 % 10 = 3, / = 12(as digit after dot(12.3) not considered in int variable)
     public static void main(String[] args) {
-        isPalindrome(121);
+
 
     }
 
@@ -51,5 +51,27 @@ public class MathClass {
             revNumber = revNumber * 10 + mod;
         }
         System.out.println(revNumber == originalNum);
+    }
+
+    // a armstrong number aesa number h kisi digit number ka har ek digit se power kre to whi number a jye
+    //ex : 153 (nu. of digits : 3) so 1^3 + 5^3 + 3^3 = 153,
+    //ex : 1634 (nu. of digits : 4) so 1^4 + 6^4 + 3^4 + 4^4 = 1634,
+    private static void isArmstrong(int num) {
+//        isArmstrong(1634);
+        int originalNumeber = num;
+        int pow = 0, sum = 0;
+        while (num > 0) {
+            num /= 10;
+            pow++;
+        }
+        num = originalNumeber;
+        while (originalNumeber > 0) {
+            int last = originalNumeber % 10;
+            sum = sum + (int) Math.pow(last, pow);
+            originalNumeber/=10;
+        }
+
+        System.out.println(num == sum);
+
     }
 }
