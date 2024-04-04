@@ -5,8 +5,6 @@ public class MathClass {
     // we are going to use mod and divide here
     //mod gave last digit always, while divide gave remaining ex, for 123 % 10 = 3, / = 12(as digit after dot(12.3) not considered in int variable)
     public static void main(String[] args) {
-
-
     }
 
     //    1234 -> 4, 123 -> 3
@@ -68,10 +66,32 @@ public class MathClass {
         while (originalNumeber > 0) {
             int last = originalNumeber % 10;
             sum = sum + (int) Math.pow(last, pow);
-            originalNumeber/=10;
+            originalNumeber /= 10;
         }
 
         System.out.println(num == sum);
 
     }
+
+    // print the nummbers that divided a num, ex 36 : 1,2,3,4,6,9,12,18,36
+    // we can just print number after mod it with i (not optimised approach)
+    private static void allDivisorNumber(int num) {
+//        allDivisorNumber(36);
+//        for (int i = 1; i <= num; i++) {
+//            if (num % i == 0) {
+//                System.out.println(i);
+//            }
+        // jo bhi multiple h wo dono numbers honge for ex : 36-> 4 * 9 and 9 * 4, so agr ek number pta h mod se to dusra number/divide se a jyege,
+        //36 -> 4, then 36/4 = 9, so 2 numbers are 4 and 9
+        for (int i = 1; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                System.out.println(i);
+                if (i != num / i) { // for cases like 6, which will duplicate we use this
+                    System.out.println(num / i);
+                }
+            }
+
+        }
+    }
 }
+
