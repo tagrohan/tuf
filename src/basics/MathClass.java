@@ -5,6 +5,7 @@ public class MathClass {
     // we are going to use mod and divide here
     //mod gave last digit always, while divide gave remaining ex, for 123 % 10 = 3, / = 12(as digit after dot(12.3) not considered in int variable)
     public static void main(String[] args) {
+
     }
 
     //    1234 -> 4, 123 -> 3
@@ -92,6 +93,43 @@ public class MathClass {
             }
 
         }
+    }
+
+    // a number who has exactly 2 factors(1 and number itself)
+    private static void checkIfPrime(int num) { // O(N/2)
+//        checkIfPrime(38);
+        boolean isPrime = true;
+        for (int i = 2; i < num / 2; i++) {
+            if (num % i == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+        if (isPrime && num != 1) { // 1 is not a prime number
+            System.out.println("its a prime number");
+        } else {
+            System.out.println("not a prime number");
+        }
+
+    }
+
+    // as definition said 2 factors of a number makes it a prime number
+    // and we know in sware root, we can find all the factors if there(line 79),
+    //that means for each factor I found 2 actually ex : for 6 -> 3*2 and 2 *3 so factors for this iteration are 2,3
+    private static void checkIfPrimeUsingSquare(int num) { // O(square root N)
+//        checkIfPrimeUsingSquare(5);
+        int factors = 0;
+        for (int i = 2; i * i < num; i++) { // or condition (i * i <= num)
+
+            if (num % i == 0) {
+                factors += 2;
+                break;
+            }
+        }
+        if (factors > 1 || num == 1) {
+            System.out.println("its not a prime");
+        } else System.out.println("It's a prime");
+
     }
 }
 
