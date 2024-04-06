@@ -5,7 +5,7 @@ public class MathClass {
     // we are going to use mod and divide here
     //mod gave last digit always, while divide gave remaining ex, for 123 % 10 = 3, / = 12(as digit after dot(12.3) not considered in int variable)
     public static void main(String[] args) {
-
+        hcf(24, 12);
     }
 
     //    1234 -> 4, 123 -> 3
@@ -130,6 +130,23 @@ public class MathClass {
             System.out.println("its not a prime");
         } else System.out.println("It's a prime");
 
+    }
+
+    // hcf is a common highest divison among 2 numbers
+    //9 -> 1,3,9 and 12-> 1,2,3,4,6,12 :: highest common factor is 3
+    private static void hcf(int a, int b) {
+//        hcf(9,12);
+        int range = b;
+        int hcf = 1;
+        if (a > b) {
+            range = a;
+        }
+        for (int i = 2; i <= range; i++) {
+            if (a % i == 0 && b % i == 0) {
+                hcf = i;
+            }
+        }
+        System.out.println(hcf);
     }
 }
 
