@@ -141,12 +141,16 @@ public class MathClass {
         if (a > b) {
             range = a;
         }
-        for (int i = 2; i <= range; i++) {
+        for (int i = 2; i <= range; i++) { //O(N)
             if (a % i == 0 && b % i == 0) {
                 hcf = i;
             }
         }
         System.out.println(hcf);
+    }
+    // hcf using Euclidean Algorithm
+    private static void hcfusingEuclideanAlgo(int a, int b) {
+
     }
 }
 
