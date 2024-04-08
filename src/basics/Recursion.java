@@ -3,7 +3,7 @@ package basics;
 public class Recursion {
 
     public static void main(String[] args) {
-        fibonacciNumber(0, 1, 3);
+
     }
 
     // i did this on my own, I have used 2 pointer to keep the hold on prev and current state and using that for my code
@@ -19,5 +19,12 @@ public class Recursion {
         prev = temp;
         fibonacciNumber(prev, curr, place - 1);
 
+    }
+    // here we can write the same code in a single parameter
+    // so to find this we need f(n) = f(n - 1) + f(n - 2)
+
+    public static int fibViaMultiRec(int num) { // System.out.println(fibViaMultiRec(7));
+        if (num <= 1) return num;
+        return fibViaMultiRec(num - 1) + fibViaMultiRec(num - 2); // O(2^n as its a exponetial call as its creating a tree of 2 then 4 then 8 and so on)
     }
 }
