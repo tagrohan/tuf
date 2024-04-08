@@ -5,7 +5,7 @@ public class MathClass {
     // we are going to use mod and divide here
     //mod gave last digit always, while divide gave remaining ex, for 123 % 10 = 3, / = 12(as digit after dot(12.3) not considered in int variable)
     public static void main(String[] args) {
-        hcf(24, 12);
+        hcfUsingEuclideanAlgousingMod(20, 15);
     }
 
     //    1234 -> 4, 123 -> 3
@@ -148,9 +148,35 @@ public class MathClass {
         }
         System.out.println(hcf);
     }
-    // hcf using Euclidean Algorithm
-    private static void hcfusingEuclideanAlgo(int a, int b) {
 
-    }
+    // hcf using Euclidean Algorithm
+    // EA-> hcf(a-b,b) if a > b, else vice-verse means b-a,a:  this is a mathematical formula to calculate hcf so need to rember it
+//    so how it works lets take a example of
+//    gcd(20,15) -> gcd(20-15(5),15) -> gcd(15-5(10),5) -> gcd(5,5) -> gcd(0,5) : as any number became zero other number is hcf
+//    so for this hcf is 5
+    private static void hcfUsingEuclideanAlgo(int a, int b) { // https://www.youtube.com/watch?v=1xNbjMdbjug&t=2684s
+        System.out.println("gcd(" + a + "," + b + ")");
+        if (a == 0 || b == 0) {
+            System.out.println(a + b);
+            return;
+        }
+        if (a >= b) a = a - b;
+        else b = b - a;
+        hcfUsingEuclideanAlgo(a, b);
+    }// it is a O(N) algorithm as the same thing can be achieved using %
+
+    // same thing can be achieved using mod as
+    //    gcd(20,15) -> gcd(20-15(5),15) -> gcd(15-5(10),5) -> gcd(5,5) -> gcd(0,5) : as any number became zero other number is hcf
+    // using mod = gcd(20 % 15,15) -> gcd(5,15), gcd(15 % 5, 5) -> gcd(0,5) : voila we have the answer
+    private static void hcfUsingEuclideanAlgousingMod(int a, int b) {
+        System.out.println("gcd(" + a + "," + b + ")");
+        if (a == 0 || b == 0) {
+            System.out.println(a + b);
+            return;
+        }
+        if (a >= b) a = a % b;
+        else b = b % a;
+        hcfUsingEuclideanAlgousingMod(a, b);
+    }// same can be achieved using while or for loop
 }
 
