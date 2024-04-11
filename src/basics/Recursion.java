@@ -3,7 +3,10 @@ package basics;
 public class Recursion {
 
     public static void main(String[] args) {
-        System.out.println(sumOfNNumbers(10));
+        int[] ints = reverseAnArray(new int[]{1, 2, 3, 4}, 0);
+        for (int i = 0; i < ints.length; i++) {
+            System.out.print(ints[i] + ", ");
+        }
     }
 
     // i did this on my own, I have used 2 pointer to keep the hold on prev and current state and using that for my code
@@ -35,4 +38,33 @@ public class Recursion {
         }
         return sumOfNNumbers(num - 1) + num;
     }
+
+    // factorial of 3 is 3x2x1 -> 6
+    // factorial is same as sum check above code
+    public static int factorialOfNNumbers(int num) {
+//        System.out.println(factorialOfNNumbers(4));
+        if (num <= 1) {
+            return num;
+        }
+        return factorialOfNNumbers(num - 1) * num;
+    }
+
+
+    // this is to reverse an array using recursion
+    // todo : tomm will do with two ponters approach
+    public static int[] reverseAnArray(int[] arr, int i) {
+//        int[] ints = reverseAnArray(new int[]{1, 2, 3, 4}, 0);
+        if (i > arr.length) {
+            return new int[arr.length];
+        }
+
+        int[] ints = reverseAnArray(arr, i + 1); // 0,1,2,3
+        if (i != 0) {
+            ints[arr.length - i] = arr[i - 1];
+        }
+
+        return ints;
+    }
+
+
 }
