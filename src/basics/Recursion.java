@@ -3,7 +3,7 @@ package basics;
 public class Recursion {
 
     public static void main(String[] args) {
-
+        System.out.println(sumOfNNumbers(10));
     }
 
     // i did this on my own, I have used 2 pointer to keep the hold on prev and current state and using that for my code
@@ -26,5 +26,13 @@ public class Recursion {
     public static int fibViaMultiRec(int num) { // System.out.println(fibViaMultiRec(7));
         if (num <= 1) return num;
         return fibViaMultiRec(num - 1) + fibViaMultiRec(num - 2); // O(2^n as its a exponetial call as its creating a tree of 2 then 4 then 8 and so on)
+    }
+
+    public static int sumOfNNumbers(int num) {
+//        System.out.println(sumOfNNumbers(10));
+        if (num <= 1) {
+            return num;
+        }
+        return sumOfNNumbers(num - 1) + num;
     }
 }
