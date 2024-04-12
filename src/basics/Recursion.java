@@ -3,10 +3,8 @@ package basics;
 public class Recursion {
 
     public static void main(String[] args) {
-        int[] ints = reverseAnArray(new int[]{1, 2, 3, 4}, 0);
-        for (int i = 0; i < ints.length; i++) {
-            System.out.print(ints[i] + ", ");
-        }
+        boolean palidrome = isPalidrome("LAkaakAL", 0);
+        System.out.println(palidrome);
     }
 
     // i did this on my own, I have used 2 pointer to keep the hold on prev and current state and using that for my code
@@ -64,6 +62,33 @@ public class Recursion {
         }
 
         return ints;
+    }
+
+
+    // here we can replace both 1st and last element together so, its a some kind of two pointer approach
+    public static int[] reverseAnArrayUsingTwoPointer(int[] arr, int i) {
+//        int[] ints = reverseAnArrayUsingTwoPointer(new int[]{1, 2, 3, 4}, 0);
+        if (i >= arr.length / 2) { // as we have 2 pointer wee should go half of array
+            return arr;
+        }
+
+        int temp = arr[i];
+        arr[i] = arr[arr.length - 1 - i];
+        arr[arr.length - 1 - i] = temp;
+
+        return reverseAnArrayUsingTwoPointer(arr, i + 1);
+    }
+
+    // checking if its pelindrome, situation looks similar to two pointer approach in above question
+    public static boolean isPalidrome(String str, int i) {
+//        boolean palidrome = isPalidrome("LAkaakAL", 0);
+        if (str.length() / 2 <= i) return true;
+
+        if (str.charAt(i) != str.charAt(str.length() - 1 - i)) {
+            return false;
+        }
+
+        return isPalidrome(str, i + 1);
     }
 
 
