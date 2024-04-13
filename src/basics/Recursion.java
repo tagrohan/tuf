@@ -49,7 +49,6 @@ public class Recursion {
 
 
     // this is to reverse an array using recursion
-    // todo : tomm will do with two ponters approach
     public static int[] reverseAnArray(int[] arr, int i) {
 //        int[] ints = reverseAnArray(new int[]{1, 2, 3, 4}, 0);
         if (i > arr.length) {
