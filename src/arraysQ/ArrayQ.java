@@ -3,7 +3,7 @@ package arraysQ;
 public class ArrayQ {
 
     public static void main(String[] args) {
-        for (int i : leftRotateBy1Place(new int[]{1, 2, 3, 4, 5, 6})) {
+        for (int i : moveZeroToEnd(new int[]{0})) {
             System.out.print(i);
         }
     }
@@ -35,5 +35,23 @@ public class ArrayQ {
         return arr;
     }
 
+    // 102040506 -> 124560000
+    // using 2 pointeer approach
+    private static int[] moveZeroToEnd(int[] arr) {
+//        moveZeroToEnd(new int[]{1,0,2,0,4,0,5,0,6})
+        int i = 0;
+        int j = 1;
+        while (i < arr.length && j < arr.length) {
+            if (arr[i] == 0 && arr[j] != 0) {
+                int temp = arr[i];
+                arr[i] = j;
+                arr[j] = temp;
+            }
+            if (arr[i] != 0) i++;
+            if (arr[j] == 0) j++;
+        }
+
+        return arr;
+    }
 
 }
