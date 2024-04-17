@@ -5,7 +5,7 @@ public class MathClass {
     // we are going to use mod and divide here
     //mod gave last digit always, while divide gave remaining ex, for 123 % 10 = 3, / = 12(as digit after dot(12.3) not considered in int variable)
     public static void main(String[] args) {
-        hcfUsingEuclideanAlgousingMod(20, 15);
+//        hcfUsingEuclideanAlgousingMod(20, 15);
     }
 
     //    1234 -> 4, 123 -> 3
@@ -83,7 +83,7 @@ public class MathClass {
 //                System.out.println(i);
 //            }
         // jo bhi multiple h wo dono numbers honge for ex : 36-> 4 * 9 and 9 * 4, so agr ek number pta h mod se to dusra number/divide se a jyege,
-        //36 -> 4, then 36/4 = 9, so 2 numbers are 4 and 9
+        //36 % 4 = 0  -> 4, then 36/4 = 9, so 2 numbers are 4 and 9
         for (int i = 1; i <= Math.sqrt(num); i++) {
             if (num % i == 0) {
                 System.out.println(i);
@@ -168,15 +168,15 @@ public class MathClass {
     // same thing can be achieved using mod as
     //    gcd(20,15) -> gcd(20-15(5),15) -> gcd(15-5(10),5) -> gcd(5,5) -> gcd(0,5) : as any number became zero other number is hcf
     // using mod = gcd(20 % 15,15) -> gcd(5,15), gcd(15 % 5, 5) -> gcd(0,5) : voila we have the answer
-    private static void hcfUsingEuclideanAlgousingMod(int a, int b) {
-        System.out.println("gcd(" + a + "," + b + ")");
+    private static void hcfUsingEuclideanAlgoUsingMod(int a, int b) {
+//        System.out.println("gcd(" + a + "," + b + ")");
         if (a == 0 || b == 0) {
             System.out.println(a + b);
             return;
         }
         if (a >= b) a = a % b;
         else b = b % a;
-        hcfUsingEuclideanAlgousingMod(a, b);
+        hcfUsingEuclideanAlgoUsingMod(a, b);
     }// same can be achieved using while or for loop
 }
 
