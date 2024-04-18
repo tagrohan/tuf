@@ -3,7 +3,7 @@ package arraysQ;
 public class ArrayQ {
 
     public static void main(String[] args) {
-        for (int i : leftRotateByDPlace(new int[]{1, 2, 3, 4, 5, 6}, 3)) {
+        for (int i : leftRotateByDPlace(new int[]{1, 2, 3, 4, 5, 6}, 2)) {
             System.out.print(i);
         }
     }
@@ -37,22 +37,48 @@ public class ArrayQ {
 
     // left rotate by N place
     // ex : 123456 : D = 3 -> 456123
-    private static int[] leftRotateByDPlace(int[] arr, int D) {
+    // Todo : error here
+    private static int[] leftRotateByDPlace(int[] arr, int D) { // O(N)
 //        leftRotateByDPlace(new int[]{1, 2, 3, 4, 5, 6}, 3);
-        int len = D % 10;
+        int len = D % arr.length;
         int[] temp = new int[D];
 // here I am storing those which need to be at back side 123
-        for (int i = 0; i < len; i++) {
+        for (int i = 0; i < len; i++) { //O(len)
             temp[i] = arr[i];
             //[1,2,3]
         }// here I am displacing rest to initial position
-//         and at the same time displaced placed will be filled by 123
-        for (int i = 0, j = D; j < arr.length; i++, j++) {
-            arr[i] = arr[j];
-            arr[j] = temp[i];
+        for (int j = D; j < arr.length; j++) { // O(N - len) + O(len) -> O(N)
+            arr[j - D] = arr[j];
+        }
+        // her I am putting back the remaining from temp to arr
+        for (int i = arr.length - len; i < arr.length; i++) {
+            arr[i] = temp[i - len - D];
         }
 
         return arr;
+    }
+
+    // here if you see closely, 123456 : D = 3
+    // if you reverve first D and last remaining -> 321,654,
+    // now reverse whole -> 456123, you will get your answer
+    private static int[] leftRotateByDPlaceV2(int[] arr, int D) {
+//        leftRotateByDPlaceV2(new int[]{1, 2, 3, 4, 5}, 2)
+        D = D % arr.length;
+        rev(arr, 0, D - 1);
+        rev(arr, D, arr.length - 1);
+        rev(arr, 0, arr.length - 1);
+
+        return arr;
+    }
+
+    private static void rev(int[] arr, int i, int j) { //O(2N)
+        while (i < j) {
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+            i++;
+            j--;
+        }
     }
 
     // 102040506 -> 124560000
