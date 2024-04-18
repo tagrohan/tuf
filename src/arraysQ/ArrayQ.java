@@ -3,7 +3,7 @@ package arraysQ;
 public class ArrayQ {
 
     public static void main(String[] args) {
-        for (int i : moveZeroToEnd(new int[]{0})) {
+        for (int i : leftRotateByDPlace(new int[]{1, 2, 3, 4, 5, 6}, 3)) {
             System.out.print(i);
         }
     }
@@ -31,6 +31,26 @@ public class ArrayQ {
             arr[i - 1] = arr[i];
         }
         arr[arr.length - 1] = first;
+
+        return arr;
+    }
+
+    // left rotate by N place
+    // ex : 123456 : D = 3 -> 456123
+    private static int[] leftRotateByDPlace(int[] arr, int D) {
+//        leftRotateByDPlace(new int[]{1, 2, 3, 4, 5, 6}, 3);
+        int len = D % 10;
+        int[] temp = new int[D];
+// here I am storing those which need to be at back side 123
+        for (int i = 0; i < len; i++) {
+            temp[i] = arr[i];
+            //[1,2,3]
+        }// here I am displacing rest to initial position
+//         and at the same time displaced placed will be filled by 123
+        for (int i = 0, j = D; j < arr.length; i++, j++) {
+            arr[i] = arr[j];
+            arr[j] = temp[i];
+        }
 
         return arr;
     }

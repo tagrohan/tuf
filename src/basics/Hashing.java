@@ -19,12 +19,11 @@ public class Hashing {
                 map.put(i, 1);
             }
         }
-        map.forEach((k, v) -> {
-            System.out.println(k + " -> " + v);
-        });
+        map.forEach((k, v) -> System.out.println(k + " -> " + v));
 
         // highest and lowest frequesncy element
         // here we need to keep the recors of both key and frequesncy so that we can compare and changes based on that
+        //can achieve this using 4 variables as well, 2 is for max(key,freq) 2 is for min(key,freq)
         Pair min = new Pair(0, Integer.MAX_VALUE);
         Pair max = new Pair(0, Integer.MIN_VALUE);
 
@@ -32,8 +31,7 @@ public class Hashing {
             if (map.get(i) > max.getFreq()) {
                 max.setKey(i);
                 max.setFreq(map.get(i));
-            }
-            if (map.get(i) < min.getFreq()) {
+            } else if (map.get(i) < min.getFreq()) {
                 min.setKey(i);
                 min.setFreq(map.get(i));
             }
@@ -42,7 +40,7 @@ public class Hashing {
         System.out.println("Max is " + max.getKey() + ", Min is " + min.getKey());
     }
 
-    static class Pair {
+    private static class Pair {
         int key;
         int freq;
 
