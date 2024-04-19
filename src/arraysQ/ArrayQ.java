@@ -37,17 +37,16 @@ public class ArrayQ {
 
     // left rotate by N place
     // ex : 123456 : D = 3 -> 456123
-    // Todo : error here
     private static int[] leftRotateByDPlace(int[] arr, int D) { // O(N)
 //        leftRotateByDPlace(new int[]{1, 2, 3, 4, 5, 6}, 3);
         int len = D % arr.length;
         int[] temp = new int[D];
 // here I am storing those which need to be at back side 123
-        for (int i = 0; i < len; i++) { //O(len)
+        for (int i = 0; i < len; i++) {
             temp[i] = arr[i];
             //[1,2,3]
         }// here I am displacing rest to initial position
-        for (int j = D; j < arr.length; j++) { // O(N - len) + O(len) -> O(N)
+        for (int j = D; j < arr.length; j++) {
             arr[j - D] = arr[j];
         }
         // her I am putting back the remaining from temp to arr
