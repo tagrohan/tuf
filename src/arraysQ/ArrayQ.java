@@ -1,9 +1,13 @@
 package arraysQ;
 
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
 public class ArrayQ {
 
     public static void main(String[] args) {
-        for (int i : leftRotateByDPlace(new int[]{1, 2, 3, 4, 5, 6}, 2)) {
+        for (Object i : unionOfArrays(new int[]{1, 2, 3, 4, 5, 6}, new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10})) {
             System.out.print(i);
         }
     }
@@ -97,6 +101,21 @@ public class ArrayQ {
         }
 
         return arr;
+    }
+
+    // one way is to do it by set as set only contains unique elements
+    private static Object[] unionOfArrays(int[] arr1, int[] arr2) {
+//        unionOfArrays(new int[]{1, 2, 3, 4, 5, 6}, new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
+        Set<Integer> set = new HashSet<>();
+
+        for (int i = 0; i < arr1.length; i++) {
+            set.add(arr1[i]);
+        }
+        for (int i = 0; i < arr2.length; i++) {
+            set.add(arr2[i]);
+        }
+
+        return set.toArray();
     }
 
 }
