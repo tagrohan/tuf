@@ -25,6 +25,7 @@ public class Main {
         List<String> names = employees.stream()
                 .filter(e -> e.getSalary() > 10)
                 .sorted(Comparator.comparingDouble(Employee::getSalary)) // .reverse() to reverse it
+//                .sorted((o1, o2) -> o1.getSalary() - o2.getSalary()) // this also works
 //                .sorted((o1, o2) -> Integer.compare(o1.getSalary(), o2.getSalary())) // another way of doing it and u can revese this by changind o1 and o2
                 .map(Employee::getName)
                 .collect(Collectors.toList());
