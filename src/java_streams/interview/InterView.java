@@ -1,16 +1,14 @@
 package java_streams.interview;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalDouble;
+import java.util.*;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class InterView {
 
     public static void main(String[] args) {
-        seperateEvenOdd();
+        sortArray();
 
     }
 
@@ -73,10 +71,21 @@ public class InterView {
 
         List<Integer> result = Stream.concat( // concat is the catch here
                 list.stream().filter(i -> i % 2 == 0),  // Even numbers
-                list.stream().filter(i -> i % 2 != 0)   // Odd numbers
+                list.stream().filter(i -> i % 2 != 0)
+                // Odd numbers
         ).collect(Collectors.toList());
 
         System.out.println(result);
+    }
+
+    private static void getElemetsStartWith2() {
+        List<Integer> list = Arrays.asList(1, 2, 22, 4, 15, 224, 7, 256, 9, 10);
+
+        List<Integer> collect = list.stream()
+                .filter(i -> String.valueOf(i).startsWith("2"))
+                .collect(Collectors.toList());
+
+        System.out.println(collect);
     }
 }
 
