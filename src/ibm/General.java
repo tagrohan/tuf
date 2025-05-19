@@ -9,6 +9,7 @@ public class General {
         int max = arr[0];
         for (int j : arr) if (j > max) max = j;
         return max;
+
     }
 
     private static int reverseANumber(int num) {
