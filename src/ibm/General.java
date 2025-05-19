@@ -2,7 +2,13 @@ package ibm;
 
 public class General {
     public static void main(String[] args) {
-        System.out.println(reverseANumber(1234));
+        System.out.println(findSecondLargest(new int[]{6,5,4,1,2,3,4,5,6,7}));
+    }
+
+    private static int findSecondLargest(int[] arr) {
+        int max = arr[0];
+        for (int j : arr) if (j > max) max = j;
+        return max;
     }
 
     private static int reverseANumber(int num) {

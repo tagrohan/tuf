@@ -7,9 +7,7 @@ import java.util.Set;
 public class ArrayQ {
 
     public static void main(String[] args) {
-        for (Object i : unionOfArrays(new int[]{1, 2, 3, 4, 5, 6}, new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10})) {
-            System.out.print(i);
-        }
+        System.out.println(secondLargestInArray(new int[]{6, 5, 4, 3, 2, 1}));
     }
 
     // we are keeping a flag to hold 2nd largest
@@ -21,6 +19,8 @@ public class ArrayQ {
             if (arr[i] > max) {
                 secondMax = max;
                 max = arr[i];
+            } else if (arr[i] > secondMax) {
+                secondMax = arr[i];
             }
         }
         return secondMax;
